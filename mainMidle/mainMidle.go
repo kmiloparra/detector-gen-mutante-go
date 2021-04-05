@@ -6,7 +6,7 @@ import (
 	"github.com/kmiloparra/resource-mutant/validaciones"
 )
 
-func mainMidle() {
+func MainMidle() {
 	dna := []string{"GTCpAGTA", "TCGAGTAG", "CGAGTAGT", "CGAGTAGT", "pppppppp", "GAGTCGAT", "AGAGTCGT", "CGAGTAGT"}
 
 	fmt.Println(validaciones.ValidacionFilaVacia(dna))
