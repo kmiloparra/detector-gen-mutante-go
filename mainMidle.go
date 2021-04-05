@@ -18,5 +18,6 @@ func mainMidle() {
 	//	utilidades.StringToMap(constantes.SECUENCIAS_INVALIDAS),
 	//	"TTTTeAAAA"))
 	fmt.Println(utilidades.Hola())
+	fmt.Println(utilidades.Hola())
 
 }
