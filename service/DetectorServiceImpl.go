@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 	"github.com/kmiloparra/resource-mutant/constantes"
 	"github.com/kmiloparra/resource-mutant/utilidades"
 )
@@ -14,15 +13,13 @@ type DetectorGenMutante struct {
 func (dect DetectorGenMutante) IsMutant(dna []string) bool {
 	dect.secuenciasInvalidas = utilidades.StringToMap(constantes.SECUENCIAS_INVALIDAS)
 	dect.secuenciasValidas = utilidades.StringToMap(constantes.SECUENCIAS_GEN_MUTANTE_HASHMAP)
+
 	contadorSecuenciasMutantes := contarSecuenciasGenomicasHorizontales(dna,dect.secuenciasValidas, dect.secuenciasInvalidas)
-	fmt.Println("contadorSecuenciasMutantes Hori",contadorSecuenciasMutantes)
+
 	if contadorSecuenciasMutantes < constantes.CANTIDAD_SECUENCIA_MUTANTE {
 		contadorSecuenciasMutantes = contarSecuenciasGenomicasVerticales(dna,dect.secuenciasValidas, dect.secuenciasInvalidas)
-		fmt.Println("contadorSecuenciasMutantes Vert",contadorSecuenciasMutantes)
 		if contadorSecuenciasMutantes < constantes.CANTIDAD_SECUENCIA_MUTANTE {
 			contadorSecuenciasMutantes = contarSecuenciasGenomicasDiagonales(dna,dect.secuenciasValidas, dect.secuenciasInvalidas)
-			fmt.Println("contadorSecuenciasMutantes Diag",contadorSecuenciasMutantes)
-
 		}
 	}
 	return contadorSecuenciasMutantes >= constantes.CANTIDAD_SECUENCIA_MUTANTE
